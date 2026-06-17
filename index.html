@@ -355,6 +355,41 @@ body[data-lang="en"]{font-feature-settings:normal;}
 .method-band .mb-tags{display:flex;flex-wrap:wrap;gap:8px;}
 @media(max-width:680px){.method-band{padding:24px 22px;}}
 body[data-lang="en"] .rep-label .en{display:none;}
+
+/* ---------- SAS tutorial tab ---------- */
+.sas-intro{color:var(--ink-soft);font-size:1.02rem;max-width:60ch;margin:0 0 28px;}
+.pdf-card{display:flex;align-items:center;gap:22px;background:var(--surface);border:1px solid var(--line);
+  border-left:5px solid var(--orange);border-radius:var(--radius);padding:22px 26px;box-shadow:var(--shadow-soft);
+  margin-bottom:44px;flex-wrap:wrap;}
+.pdf-ic{font-family:var(--font-display);font-weight:700;font-size:.92rem;letter-spacing:.06em;color:#fff;
+  background:linear-gradient(135deg,var(--orange),var(--orange-deep));border-radius:12px;
+  width:58px;height:58px;display:grid;place-items:center;flex:none;}
+.pdf-body{flex:1;min-width:180px;}
+.pdf-t{font-family:var(--font-serif-tc);font-weight:700;font-size:1.12rem;color:var(--ink);letter-spacing:.04em;}
+.pdf-d{font-size:.9rem;color:var(--ink-soft);margin-top:3px;}
+.pdf-btn{display:inline-flex;align-items:center;gap:9px;background:var(--ink);color:#fff;
+  font-family:var(--font-serif-tc);font-weight:600;letter-spacing:.06em;font-size:.95rem;
+  padding:12px 22px;border-radius:999px;transition:transform .2s,box-shadow .2s;box-shadow:var(--shadow-soft);}
+.pdf-btn:hover{transform:translateY(-2px);box-shadow:var(--shadow);color:#fff;}
+.pdf-btn:focus-visible{outline:2px solid var(--orange);outline-offset:3px;}
+.sas-sub{font-family:var(--font-serif-tc);font-weight:700;letter-spacing:.1em;font-size:1.15rem;
+  margin:0 0 20px;display:flex;align-items:center;gap:14px;color:var(--ink);}
+.sas-sub .en{font-family:var(--font-display);font-style:italic;font-weight:400;font-size:.8rem;color:var(--ink-faint);letter-spacing:0;}
+.sas-sub::after{content:"";flex:1;height:1px;background:var(--line);}
+.vgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;}
+.vcard{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;
+  box-shadow:var(--shadow-soft);position:relative;}
+.vnum{position:absolute;top:10px;left:10px;z-index:3;font-family:var(--font-display);font-weight:600;
+  font-size:.76rem;color:#fff;background:rgba(67,56,47,.72);border-radius:999px;padding:3px 10px;backdrop-filter:blur(4px);}
+.vwrap{position:relative;width:100%;padding-bottom:56.25%;background:#1c1712;}
+.vwrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+.vph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:11px;
+  color:var(--ink-soft);font-size:.86rem;letter-spacing:.04em;
+  background:repeating-linear-gradient(45deg,#f4ebdb,#f4ebdb 12px,#efe4d0 12px,#efe4d0 24px);}
+.vph-ic{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--surface);
+  border:1px solid var(--line-strong);color:var(--orange);font-size:1.05rem;}
+.vtitle{padding:13px 16px;font-family:var(--font-serif-tc);font-weight:600;font-size:.98rem;color:var(--ink);letter-spacing:.02em;}
+@media(max-width:680px){.vgrid{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -370,6 +405,7 @@ body[data-lang="en"] .rep-label .en{display:none;}
         <button class="tab" role="tab" aria-selected="true"  data-target="experience"><span class="zh-only">學經歷</span><span class="en-only">Career</span></button>
         <button class="tab" role="tab" aria-selected="false" data-target="research"><span class="zh-only">研究主軸</span><span class="en-only">Research</span></button>
         <button class="tab" role="tab" aria-selected="false" data-target="publications"><span class="zh-only">學術著作</span><span class="en-only">Publications</span></button>
+        <button class="tab" role="tab" aria-selected="false" data-target="sas"><span class="zh-only">SAS 教學</span><span class="en-only">SAS Tutorial</span></button>
       </nav>
       <div class="lang" role="group" aria-label="language">
         <button id="langZh" class="lbtn on" type="button" onclick="setLang('zh')">中</button>
@@ -584,6 +620,32 @@ body[data-lang="en"] .rep-label .en{display:none;}
     <div id="bookList" class="booklist"></div>
   </section>
 
+  <!-- ============ TAB 4：SAS 教學 ============ -->
+  <section class="panel" id="sas" role="tabpanel">
+    <div class="sec-head">
+      <div class="kicker">SAS Tutorial</div>
+      <h2><span class="zh-only">SAS 教學</span><span class="en-only">SAS Tutorial</span></h2>
+      <div class="rule"></div>
+    </div>
+
+    <p class="sas-intro"><span class="zh-only">本單元提供 SAS 統計軟體教學的課程講義與影片。講義可自由下載，影片僅供線上觀看。</span><span class="en-only">This module provides course handouts and videos for the SAS statistical-software tutorial. The handout is downloadable; the videos are for online viewing only.</span></p>
+
+    <div class="pdf-card">
+      <div class="pdf-ic">PDF</div>
+      <div class="pdf-body">
+        <div class="pdf-t"><span class="zh-only">課程講義</span><span class="en-only">Course Handout</span></div>
+        <div class="pdf-d"><span class="zh-only">SAS 教學完整講義，可下載 PDF 檔。</span><span class="en-only">Complete SAS tutorial handout, available as a downloadable PDF.</span></div>
+      </div>
+      <a class="pdf-btn" href="prof-tonychen-sas-handout.pdf" download>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span class="zh-only">下載 PDF</span><span class="en-only">Download PDF</span>
+      </a>
+    </div>
+
+    <div class="sas-sub"><span class="zh-only">課程影片</span><span class="en-only">Course Videos</span> <span class="en">Online viewing only</span></div>
+    <div class="vgrid" id="sasVideos"></div>
+  </section>
+
 </main>
 
 <footer class="foot">
@@ -610,7 +672,7 @@ function setLang(l){
   document.getElementById('langZh').classList.toggle('on', l==='zh');
   document.getElementById('langEn').classList.toggle('on', l==='en');
   document.getElementById('pubSearch').placeholder = l==='zh' ? '搜尋作者、主題或期刊…' : 'Search author, topic or journal…';
-  renderResearch(); renderRep(); renderPubs();
+  renderResearch(); renderRep(); renderPubs(); renderSAS();
 }
 
 /* ---------- tab switching ---------- */
@@ -721,7 +783,44 @@ document.querySelectorAll('#pubFilters .fbtn').forEach(b=>b.addEventListener('cl
 document.getElementById('pubSearch').placeholder = LANG==='zh' ? '搜尋作者、主題或期刊…' : 'Search author, topic or journal…';
 document.getElementById('langZh').classList.toggle('on', LANG==='zh');
 document.getElementById('langEn').classList.toggle('on', LANG==='en');
-renderResearch(); renderRep(); renderPubs(); renderBooks();
+
+/* ---------- SAS tutorial videos ----------
+   每部影片填入一般的 YouTube 或 Vimeo 連結即可，程式會自動轉成嵌入播放器。
+   想做到「僅供線上觀看」，請把影片設為 YouTube 不公開(unlisted) 或 Vimeo 並關閉下載。 */
+const lessons=[
+  {zh:'第 1 講',  en:'Lesson 1',  url:''},
+  {zh:'第 2 講',  en:'Lesson 2',  url:''},
+  {zh:'第 3 講',  en:'Lesson 3',  url:''},
+  {zh:'第 4 講',  en:'Lesson 4',  url:''},
+  {zh:'第 5 講',  en:'Lesson 5',  url:''},
+  {zh:'第 6 講',  en:'Lesson 6',  url:''},
+  {zh:'第 7 講',  en:'Lesson 7',  url:''},
+  {zh:'第 8 講',  en:'Lesson 8',  url:''},
+  {zh:'第 9 講',  en:'Lesson 9',  url:''},
+  {zh:'第 10 講', en:'Lesson 10', url:''},
+];
+function toEmbed(u){
+  if(!u) return '';
+  let m=u.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/|live\/))([\w-]{6,})/);
+  if(m) return 'https://www.youtube-nocookie.com/embed/'+m[1]+'?rel=0&modestbranding=1';
+  m=u.match(/vimeo\.com\/(?:video\/)?(\d+)/);
+  if(m) return 'https://player.vimeo.com/video/'+m[1]+'?dnt=1';
+  return u;
+}
+function renderSAS(){
+  const el=document.getElementById('sasVideos');
+  if(!el) return;
+  el.innerHTML=lessons.map((v,i)=>{
+    const title=(LANG==='zh'?v.zh:(v.en||v.zh))||('Lesson '+(i+1));
+    const src=toEmbed(v.url);
+    const player=src
+      ? `<div class="vwrap" oncontextmenu="return false"><iframe src="${src}" title="${title}" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`
+      : `<div class="vwrap"><div class="vph"><span class="vph-ic">&#9654;</span><span>${LANG==='zh'?'待嵌入影片連結':'video link pending'}</span></div></div>`;
+    return `<article class="vcard"><div class="vnum">${String(i+1).padStart(2,'0')}</div>${player}<div class="vtitle">${title}</div></article>`;
+  }).join('');
+}
+
+renderResearch(); renderRep(); renderPubs(); renderBooks(); renderSAS();
 </script>
 </body>
 </html>
