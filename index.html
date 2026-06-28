@@ -390,6 +390,7 @@ body[data-lang="en"] .rep-label .en{display:none;}
   border:1px solid var(--line-strong);color:var(--orange);font-size:1.05rem;}
 .vtitle{padding:13px 16px;font-family:var(--font-serif-tc);font-weight:600;font-size:.98rem;color:var(--ink);letter-spacing:.02em;}
 @media(max-width:680px){.vgrid{grid-template-columns:1fr;}}
+.pub-legend{font-size:.84rem;color:var(--ink-soft);margin:4px 2px 4px;letter-spacing:.02em;}
 </style>
 </head>
 <body>
@@ -586,16 +587,13 @@ body[data-lang="en"] .rep-label .en{display:none;}
     </div>
 
     <div class="pub-intro">
-      <p class="zh-only">自 1995 年起，於具同儕審查機制的國際學術期刊發表逾 487 篇論文，多以第一作者或通訊作者身份刊登於 <i>JAMA</i>、<i>Gut</i>、<i>Lancet</i>、<i>JASA</i>、<i>Biometrics</i> 等頂尖期刊。以下完整收錄逾 480 篇歷年論文，並標示五篇代表著作。</p>
-      <p class="en-only">Since 1995, more than 487 peer-reviewed articles — many as first or corresponding author in flagship journals such as <i>JAMA</i>, <i>Gut</i>, <i>Lancet</i>, <i>JASA</i> and <i>Biometrics</i>. The complete list of 480+ papers is provided below, with five representative works highlighted.</p>
+      <p class="zh-only">自 1995 年起，於具同儕審查機制的國際學術期刊發表逾 487 篇論文，多以第一作者或通訊作者身份刊登於 <i>JAMA</i>、<i>Gut</i>、<i>Lancet</i>、<i>JASA</i>、<i>Biometrics</i> 等頂尖期刊。以下完整收錄逾 480 篇歷年論文。</p>
+      <p class="en-only">Since 1995, more than 487 peer-reviewed articles — many as first or corresponding author in flagship journals such as <i>JAMA</i>, <i>Gut</i>, <i>Lancet</i>, <i>JASA</i> and <i>Biometrics</i>. The complete list of 480+ papers is provided below.</p>
       <div class="pub-stat">
         <div><div class="n">480<span class="u">+</span></div><div class="l"><span class="zh-only">同儕審查論文</span><span class="en-only">peer-reviewed</span></div></div>
         <div><div class="n">1995<span class="u">→</span></div><div class="l"><span class="zh-only">持續發表迄今</span><span class="en-only">to present</span></div></div>
       </div>
     </div>
-
-    <div class="rep-label"><span class="zh-only">代表著作</span><span class="en-only">Representative Works</span> <span class="en">Five Representative Works</span></div>
-    <div class="rep" id="repList"></div>
 
     <div class="pub-tools">
       <label class="search">
@@ -615,6 +613,7 @@ body[data-lang="en"] .rep-label .en{display:none;}
 
     <div class="pub-count" id="pubCount"></div>
     <div class="pub-count-line"><span id="pubCount"></span></div>
+    <div class="pub-legend"><span class="zh-only">* 通訊作者</span><span class="en-only">* corresponding author</span></div>
     <div id="pubList"></div>
     <p class="pub-note"><span class="zh-only">＊ 標示者為當年度旗艦級期刊論文。完整著作清單收錄逾 487 篇，此處為精選。</span><span class="en-only">★ Flagship-journal papers. The full list holds 480+ titles; a curated selection is shown here.</span></p>
 
@@ -674,7 +673,7 @@ function setLang(l){
   document.getElementById('langZh').classList.toggle('on', l==='zh');
   document.getElementById('langEn').classList.toggle('on', l==='en');
   document.getElementById('pubSearch').placeholder = l==='zh' ? '搜尋作者、主題或期刊…' : 'Search author, topic or journal…';
-  renderResearch(); renderRep(); renderPubs(); renderSAS();
+  renderResearch(); renderPubs(); renderSAS();
 }
 
 /* ---------- tab switching ---------- */
@@ -717,36 +716,9 @@ function renderResearch(){
     </article>`;}).join('');
 }
 
-/* ---------- representative works ---------- */
-const rep=[
- {t:'Screening for Helicobacter pylori to Prevent Gastric Cancer: A Pragmatic Randomized Clinical Trial',
-  a:'Lee YC, Chiang TH, \u2026, Chen THH, Yeh YP', j:'JAMA', d:'2024; 332(19):1642\u20131651', if:'66.8'},
- {t:'Assessing overdiagnosis of fecal immunological test screening for colorectal cancer with a digital twin approach',
-  a:'Lin TY, Chiu SY, \u2026, Chen TH', j:'npj Digital Medicine', d:'2023; 6(1):24', if:'15.2'},
- {t:'Long-term effectiveness of faecal immunochemical test screening for proximal and distal colorectal cancers',
-  a:'Chiu HM, Jen GH, \u2026, Chen TH', j:'Gut', d:'2021; 70(12):2321\u20132329', if:'24.5'},
- {t:'Population-based Breast Cancer Screening with Risk-based and Universal Mammography vs. Clinical Breast Examination: 1,429,890 Taiwanese Women',
-  a:'Yen AMF, Tsau HS, \u2026, Chen HH', j:'JAMA Oncology', d:'2016; 2(7):915\u2013921', if:'25.9'},
- {t:'The benefit of mass eradication of Helicobacter pylori infection: a community-based study of gastric cancer prevention',
-  a:'Lee YC, Chen THH, \u2026, Lin JT', j:'Gut', d:'2013; 62(5):676\u2013682', if:'24.5'},
-];
-function renderRep(){
-  const role = LANG==='zh' ? '通訊作者 Corresponding' : 'Corresponding Author';
-  document.getElementById('repList').innerHTML = rep.map((r,i)=>`
-    <div class="rep-item">
-      <div class="num">${String(i+1).padStart(2,'0')}</div>
-      <div class="body">
-        <div class="t">${r.t}</div>
-        <div class="meta">${r.a}. <span class="j">${r.j}</span>. ${r.d}.</div>
-        <span class="role">${role}</span>
-      </div>
-      <div class="if"><div class="v">${r.if}</div><div class="k">5-yr IF</div></div>
-    </div>`).join('');
-}
-
 /* ---------- selected publications ---------- */
 const pubs=[
-  {"y":2026,"c":"Mao F, Chen TC, Yu KJ, Cheung LC, Hsu WL, Tsai MH, Kang CJ, Chien CY, Hua CH, <b>Chen HH</b>, Chen SL, Yen AM, Graubard BI, Lou PJ, Chen CJ, Hildesheim A, Wang CP, Chaturvedi AK*. Cessation of Betel Quid Chewing, Smoking, and Alcohol Drinking and Risk of Oral Precancer and Oral Cancer. JCO Glob Oncol. 2026 Jun;12(6):e2500541. doi: 10.1200/GO-25-00541.","s":0,"a":"screen","r":""},
+  {"y":2026,"c":"Mao F, Chen TC, Yu KJ, Cheung LC, Hsu WL, Tsai MH, Kang CJ, Chien CY, Hua CH, <b>Chen HH</b>, Chen SL, Yen AM, Graubard BI, Lou PJ, Chen CJ, Hildesheim A, Wang CP, Chaturvedi AK*. Cessation of Betel Quid Chewing, Smoking, and Alcohol Drinking and Risk of Oral Precancer and Oral Cancer. JCO Glob Oncol. 2026 Jun;12(6):e2500541. doi: 10.1200/GO-25-00541. [SCI]","s":0,"a":"screen","r":""},
   {"y":2026,"c":"Chang JC*, Yen AM, Chen SL, Liou HH, <b>Chen TH</b>. Early alcohol initiation is associated with higher lifetime Parkinson&#x27;s disease risk after accounting for exposure latency. J Parkinsons Dis. 2026 May 25:1877718X261453796. doi: 10.1177/1877718X261453796. [SCI]","s":0,"a":"chronic","r":""},
   {"y":2026,"c":"Yeh YP, Lin ATY, Su WW, Yang CC, Yan SL, Yao YC, Wang HC, Hsieh ML, Shih LC, Liu HC, Chen HH, Yen AMF, Chen SLS, Hsu CY, Lai CC, Luh DL, Chien RN, Chen CJ, Easterbrook P, Ward JW, Hu TH*, <b>Chen THH*</b>; on behalf of the Changhua Hepatitis C Elimination Task Force. Towards hepatitis C elimination with integrated risk-based screening and decentralized care in Taiwan. Nat Commun. 2026 May 15. doi: 10.1038/s41467-026-72912-9. [SCI]","s":1,"a":"screen","r":""},
   {"y":2026,"c":"Lee YC, Liu JH, Mülder DT, Yang JY, Chiang TH, Hsu WF, Chiu HM, Su WW, Chou KC, Chen SLS, Fann JCY, Chiu SYH, Chuang SL, Chen YR, Chu TCC, Chang MYH, Chen SD, Hu TH, Fang YJ, Liou JM, Wu MS, Yeh YP, Hur C, Yen AMF*, <b>Chen THH*</b>; on behalf of the Collaborators of Taiwan Community-based Integrated Screening Group. Cost-effectiveness of fecal immunochemical test versus Helicobacter pylori stool antigen co-testing. JAMA. 2026 Jun 1:e266908. doi: 10.1001/jama.2026.6908. [SCI]","s":1,"a":"screen","r":""},
@@ -1323,7 +1295,7 @@ function renderSAS(){
   }).join('');
 }
 
-renderResearch(); renderRep(); renderPubs(); renderBooks(); renderSAS();
+renderResearch(); renderPubs(); renderBooks(); renderSAS();
 </script>
 </body>
 </html>
